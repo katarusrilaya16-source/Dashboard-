@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f4f6f9;
+            margin:0;
+            padding:20px;
+        }
+
+        .top-right{
+            position:absolute;
+            top:20px;
+            right:20px;
+        }
+
+        .logout-btn{
+            background:red;
+            color:white;
+            padding:10px 20px;
+            border-radius:8px;
+            text-decoration:none;
+        }
+
+        h1{
+            text-align:center;
+            color:#2575fc;
+        }
+
+        .add-btn{
+            background:green;
+            color:white;
+            padding:10px 15px;
+            text-decoration:none;
+            border-radius:8px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+            background:white;
+        }
+
+        th{
+            background:#2575fc;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            padding:12px;
+            text-align:center;
+            border:1px solid #ddd;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="top-right">
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
+
+<h1>All Users Dashboard</h1>
+
+<a href="/mail" class="add-btn">Add New User</a>
+
+
+</body>
+</html>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.created_at }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" style="text-align: center;">No users found in the database.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
